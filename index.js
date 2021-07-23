@@ -14,6 +14,7 @@ const numToDay = {
   5: ["Friday", links.fridayLink],
   6: null,
 };
+const clearBtn = document.querySelector(".clear-btn");
 
 // FUNCTIONS
 const collectDataFromLinkCollector = (event) => {
@@ -37,6 +38,7 @@ const collectDataFromLinkCollector = (event) => {
     mainLink: mainLink,
   };
   localStorage.setItem("links", JSON.stringify(links));
+  location.reload();
 };
 
 const generateMeetButtons = (htmlDiv) => {
@@ -45,18 +47,27 @@ const generateMeetButtons = (htmlDiv) => {
     const dayName = numToDay[currentDayNum][0];
     const dayLink = numToDay[currentDayNum][1];
     htmlDiv.innerHTML = `
-      <p class="display-text">Here are your links for ${dayName}</p>
-      <a class="link lab-link" href="${dayLink}">${dayName} Lab</a>
-      <a class="link main-link" href="${mainLink}">Main Lecture</a>
-    `;
+        <p class="display-text">Here are your links for ${dayName}</p>
+        <a class="link lab-link" href="${dayLink}">${dayName} Lab</a>
+        <a class="link main-link" href="${mainLink}">Main Lecture</a>
+        <button class="btn clear-btn">Clear Everything (Double Click)</button>
+      `;
   } else if (currentDayNum == 6) {
     htmlDiv.innerHTML = `
-      <p class="display-text">You have NO Lab today</p>
-      <a class="link main-link" href="${mainLink}">Main Lecture</a>
-    `;
+        <p class="display-text">You have NO Lab today</p>
+        <a class="link main-link" href="${mainLink}">Main Lecture</a>
+        <button class="btn clear-btn">Clear Everything (Double Click)</button>
+      `;
   } else if (currentDayNum == 0) {
     siteTitle.textContent = "It's a holiday today, enjoy bitch!";
+    htmlDiv.innerHTML = `
+        <button class="btn clear-btn">Clear Everything (Double Click)</button>
+      `;
   }
+};
+
+const clearEverything = () => {
+  localStorage.clear();
 };
 
 // PROGRAMS STARTS
@@ -68,6 +79,7 @@ if (formSubmitted) {
   document.body.appendChild(htmlDiv);
   htmlDiv.classList.add("link-container");
   generateMeetButtons(htmlDiv);
+  clearBtn.addEventListener("dblclick", clearEverything);
 } else {
   linkCollectorForm.addEventListener("submit", (event) => {
     collectDataFromLinkCollector(event);

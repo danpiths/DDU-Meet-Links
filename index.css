@@ -74,7 +74,7 @@ form {
   color: #444;
 }
 
-#submit-btn {
+.btn {
   border: none;
   padding: 0.5em 1.3em;
   border-radius: 5px;
@@ -82,22 +82,29 @@ form {
   transition: all 0.3s;
   display: block;
   text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: #111;
+  color: yellowgreen;
+}
+
+.btn:hover,
+.btn:focus {
+  cursor: pointer;
+}
+
+#submit-btn {
   font-size: 1.25rem;
   width: 100%;
   margin-top: 1.5em;
   margin-left: auto;
-  background: #111;
-  color: yellowgreen;
-  font-weight: 600;
-  letter-spacing: 1px;
 }
 
 #submit-btn:hover,
 #submit-btn:focus {
+  transform: scale(1.1);
   background: yellowgreen;
   color: #111;
-  transform: scale(1.1);
-  cursor: pointer;
 }
 
 .link-container {
@@ -111,8 +118,9 @@ form {
 }
 
 .display-text {
-  font-size: 1.2rem;
+  margin-top: 0.5em;
   margin-bottom: 2em;
+  font-size: 1.2rem;
 }
 
 .link {
@@ -131,7 +139,6 @@ form {
 
 .link:hover,
 .link:focus {
-  /* transform: scale(1.1); */
   background: #eee;
 }
 
@@ -152,4 +159,20 @@ form {
 .main-link:hover,
 .main-link:focus {
   color: yellowgreen;
+}
+
+.clear-btn {
+  border-radius: 0;
+  font-size: 1.25rem;
+  color: salmon;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  transform: translateY(-100%);
+}
+
+.clear-btn:hover,
+.clear-btn:focus {
+  color: #eee;
+  background: red;
 }
