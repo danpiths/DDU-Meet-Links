@@ -14,7 +14,6 @@ const numToDay = {
   5: ["Friday", links.fridayLink],
   6: null,
 };
-const clearBtn = document.querySelector(".clear-btn");
 
 // FUNCTIONS
 const collectDataFromLinkCollector = (event) => {
@@ -68,6 +67,7 @@ const generateMeetButtons = (htmlDiv) => {
 
 const clearEverything = () => {
   localStorage.clear();
+  location.reload();
 };
 
 // PROGRAMS STARTS
@@ -79,6 +79,7 @@ if (formSubmitted) {
   document.body.appendChild(htmlDiv);
   htmlDiv.classList.add("link-container");
   generateMeetButtons(htmlDiv);
+  const clearBtn = document.querySelector(".clear-btn");
   clearBtn.addEventListener("dblclick", clearEverything);
 } else {
   linkCollectorForm.addEventListener("submit", (event) => {

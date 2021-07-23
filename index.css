@@ -102,9 +102,8 @@ form {
 
 #submit-btn:hover,
 #submit-btn:focus {
-  transform: scale(1.1);
   background: yellowgreen;
-  color: #111;
+  color: #222;
 }
 
 .link-container {
