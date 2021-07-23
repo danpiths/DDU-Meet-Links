@@ -5,15 +5,6 @@ const formSubmitted = JSON.parse(localStorage.getItem("formSubmitted"));
 const links = JSON.parse(localStorage.getItem("links"));
 const currentDate = new Date();
 const currentDayNum = currentDate.getDay();
-const numToDay = {
-  0: null,
-  1: ["Monday", links.mondayLink],
-  2: ["Tuesday", links.tuesdayLink],
-  3: ["Wednesday", links.wednesdayLink],
-  4: ["Thursday", links.thursdayLink],
-  5: ["Friday", links.fridayLink],
-  6: null,
-};
 
 // FUNCTIONS
 const collectDataFromLinkCollector = (event) => {
@@ -37,10 +28,9 @@ const collectDataFromLinkCollector = (event) => {
     mainLink: mainLink,
   };
   localStorage.setItem("links", JSON.stringify(links));
-  location.reload();
 };
 
-const generateMeetButtons = (htmlDiv) => {
+const generateMeetButtons = (htmlDiv, numToDay) => {
   const mainLink = links.mainLink;
   if (0 < currentDayNum < 6) {
     const dayName = numToDay[currentDayNum][0];
@@ -72,17 +62,29 @@ const clearEverything = () => {
 
 // PROGRAMS STARTS
 if (formSubmitted) {
+  const numToDay = {
+    0: null,
+    1: ["Monday", links.mondayLink],
+    2: ["Tuesday", links.tuesdayLink],
+    3: ["Wednesday", links.wednesdayLink],
+    4: ["Thursday", links.thursdayLink],
+    5: ["Friday", links.fridayLink],
+    6: null,
+  };
+  console.log("submitted");
   linkCollectorForm.style.display = "none";
   siteTitle.classList.add("submitted-title");
   siteTitle.textContent = `Hello ${links.name}`;
   const htmlDiv = document.createElement("div");
   document.body.appendChild(htmlDiv);
   htmlDiv.classList.add("link-container");
-  generateMeetButtons(htmlDiv);
+  generateMeetButtons(htmlDiv, numToDay);
   const clearBtn = document.querySelector(".clear-btn");
   clearBtn.addEventListener("dblclick", clearEverything);
 } else {
+  console.log("hi");
   linkCollectorForm.addEventListener("submit", (event) => {
     collectDataFromLinkCollector(event);
+    location.reload();
   });
 }
