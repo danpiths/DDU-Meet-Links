@@ -45,7 +45,7 @@ form {
 }
 
 .form-item-label {
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-family: inherit;
   margin-right: 0.7em;
 }
@@ -175,4 +175,10 @@ form {
 .clear-btn:focus {
   color: #eee;
   background: red;
+}
+
+@media (max-width: 450px) {
+  .form-item-label {
+    font-size: 1.05rem;
+  }
 }
