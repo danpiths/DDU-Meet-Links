@@ -32,7 +32,7 @@ const collectDataFromLinkCollector = (event) => {
 
 const generateMeetButtons = (htmlDiv, numToDay) => {
   const mainLink = links.mainLink;
-  if (0 < currentDayNum < 6) {
+  if (0 < currentDayNum && currentDayNum < 6) {
     const dayName = numToDay[currentDayNum][0];
     const dayLink = numToDay[currentDayNum][1];
     htmlDiv.innerHTML = `
@@ -71,7 +71,6 @@ if (formSubmitted) {
     5: ["Friday", links.fridayLink],
     6: null,
   };
-  console.log("submitted");
   linkCollectorForm.style.display = "none";
   siteTitle.classList.add("submitted-title");
   siteTitle.textContent = `Hello ${links.name}`;
@@ -82,7 +81,6 @@ if (formSubmitted) {
   const clearBtn = document.querySelector(".clear-btn");
   clearBtn.addEventListener("dblclick", clearEverything);
 } else {
-  console.log("hi");
   linkCollectorForm.addEventListener("submit", (event) => {
     collectDataFromLinkCollector(event);
     location.reload();
