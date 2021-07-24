@@ -37,14 +37,14 @@ const generateMeetButtons = (htmlDiv, numToDay) => {
     const dayLink = numToDay[currentDayNum][1];
     htmlDiv.innerHTML = `
         <p class="display-text">Here are your links for ${dayName}</p>
-        <a class="link lab-link" href="${dayLink}">${dayName} Lab</a>
-        <a class="link main-link" href="${mainLink}">Main Lecture</a>
+        <a class="link lab-link" href="${dayLink}" target="_blank" rel="noopener noreferrer">${dayName} Lab</a>
+        <a class="link main-link" href="${mainLink}" target="_blank" rel="noopener noreferrer">Main Lecture</a>
         <button class="btn clear-btn">Clear Everything (Double Click)</button>
       `;
   } else if (currentDayNum == 6) {
     htmlDiv.innerHTML = `
         <p class="display-text">You have NO Lab today</p>
-        <a class="link main-link" href="${mainLink}">Main Lecture</a>
+        <a class="link main-link" href="${mainLink}" target="_blank" rel="noopener noreferrer">Main Lecture</a>
         <button class="btn clear-btn">Clear Everything (Double Click)</button>
       `;
   } else if (currentDayNum == 0) {
